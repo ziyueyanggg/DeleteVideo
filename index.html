@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">
+      You can add example videos like these to your list:
+      <ul>
+        <li>https://www.youtube.com/embed/lY2yjAdbvdQ</li>
+        <li>https://www.youtube.com/embed/dT2owtxkU8k</li>
+        <li>https://www.youtube.com/embed/hT_nvWreIhg</li>
+      </ul>
+
+      Title: <input v-model="newTitle" size="50" placeholder="edit me" /><br />
+      URL:
+      <input
+        v-model="newUrl"
+        size="50"
+        placeholder="https://www.youtube.com/embed/iWZmdoY1aTE"
+      /><br />
+      <button @click="addVideo">Add another video</button> <br />
+      <br />
+      Videos<br />
+      <span v-for="video in videos">
+        <iframe
+          :src="video.url"
+          width="300"
+          height="200"
+          v-if="video.show"
+        ></iframe
+        ><br />
+        {{video.title}}
+        <button @click="video.show=false" v-show="video.show==true">
+          Hide
+        </button>
+        <button @click="video.show=true" v-show="video.show==false">
+          Show
+        </button>
+        <button @click="deleteVideo(video)">Delete</button> <br />
+      </span>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="./main.js"></script>
+    <script></script>
+  </body>
+</html>
